@@ -13,7 +13,9 @@ const styles = {
 
     totalSavings: {
         color: 'red',
-        fontWeight: 800
+        fontWeight: 800,
+        borderStyle: 'solid',
+        borderColor: 'yellow'
     }
 };
 
