@@ -5,12 +5,14 @@ import SubTotal from '../SubTotal/SubTotal';
 import PickupSavings from '../PickupSavings/PickupSavings';
 import TaxesFees from "../TaxesFees/TaxesFees";
 import EstimatedTotal from "../EstimatedTotal/EstimatedTotal";
+import ItemDetails from "../ItemDetails/ItemDetails";
 
 function MainPage(props) {
     // States
     const [total, setTotal] = useState(100);
     const [pickupSavings, setPickupSavings] = useState(-3.85);
     const [taxes, setTaxes] = useState(0);
+    const [estimatedTotal, setEstimatedTotal] = useState(0);
 
     return (
         <div className="main-page-grid">
@@ -19,7 +21,9 @@ function MainPage(props) {
                 <PickupSavings price={pickupSavings.toFixed(2)}/>
                 <TaxesFees taxes={taxes.toFixed(2)}/>
                 <hr />
-                <EstimatedTotal total={0}/>
+                <EstimatedTotal total={estimatedTotal.toFixed(2)}/>
+                <ItemDetails price={estimatedTotal.toFixed(2)}/>
+                <hr/>
 
             </Container>
         </div>
