@@ -20,8 +20,8 @@ function ItemDetails(props) {
                 variant="outline-light"
                 onClick={() => setOpen(!open)}
             >
-                {open === false ? "See": "Hide"} item details
-                {open === false ? "+": "-"}
+                {(open === false) ? "See": "Hide"} item details
+                {(open === false) ? " +": " -"}
             </Button>
             <Collapse in={open}>
                 <div>
