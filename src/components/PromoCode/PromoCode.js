@@ -8,15 +8,16 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
 import './PromoCode.scss';
+import { connect } from 'react-redux';
+import { handleChange } from "../../actions/promoCodeActions";
 
 function PromoCode(props) {
     // States
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState("");
 
-    function handleChange() {
-        return (<h1>ssssssss</h1>);
-    }
+    const handleChange = e => {
+        props.handleChange(e)
+    };
 
     return (
         <div className="promo-code-row">
@@ -68,4 +69,8 @@ PromoCode.propTypes = {
     giveDiscount: PropTypes.number.isRequired,
 };
 
-export default PromoCode;
+const mapStateToProps = state => ({
+    promoCode: state.promoCode.value
+});
+
+export default connect(mapStateToProps, {handleChange})(PromoCode);

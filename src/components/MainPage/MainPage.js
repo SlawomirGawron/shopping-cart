@@ -7,6 +7,8 @@ import TaxesFees from "../TaxesFees/TaxesFees";
 import EstimatedTotal from "../EstimatedTotal/EstimatedTotal";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import PromoCode from "../PromoCode/PromoCode";
+import { connect } from "react-redux";
+import { handleChange } from "../../actions/promoCodeActions";
 
 // Fix sales tax and area code.***********************************************************
 
@@ -19,9 +21,12 @@ function MainPage(props) {
     const [estimatedTotal, setEstimatedTotal] = useState(0);
     const [disablePromoButton, setDisablePromoButton] = useState(false);
 
-    function giveDiscountHandler() {
-
-    }
+    const giveDiscountHandler = () => {
+        if (props.promoCode === "Discount") {
+            setEstimatedTotal(estimatedTotal * 0.9);
+            setDisablePromoButton(true);
+        }
+    };
 
     useEffect( () => {
         setTaxes((total + pickupSavings) * 0.0875)
@@ -48,4 +53,8 @@ function MainPage(props) {
     );
 }
 
-export default MainPage;
+const mapStateToProps = state => ({
+    promoCode: state.promoCode.value
+});
+
+export default connect(mapStateToProps, { handleChange })(MainPage);
