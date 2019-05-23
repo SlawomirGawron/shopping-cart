@@ -34,17 +34,21 @@ function MainPage(props) {
 
     });
 
+    const roundTwoDecimal = (number) => {
+        return Math.round( number * 1e2)/1e2;
+    };
+
     return (
         <div className="main-page-grid">
             <Container className="main-page-container">
-                <SubTotal price={total.toFixed(2)} />
-                <PickupSavings price={pickupSavings.toFixed(2)}/>
-                <TaxesFees taxes={taxes.toFixed(2)}/>
+                <SubTotal price={roundTwoDecimal(total)} />
+                <PickupSavings price={roundTwoDecimal(pickupSavings)}/>
+                <TaxesFees taxes={roundTwoDecimal(taxes)}/>
                 <hr />
-                <EstimatedTotal total={estimatedTotal.toFixed(2)}/>
-                <ItemDetails price={estimatedTotal.toFixed(2)}/>
+                <EstimatedTotal total={roundTwoDecimal(estimatedTotal)}/>
+                <ItemDetails price={roundTwoDecimal(estimatedTotal)}/>
                 <hr/>
-                <PromoCode promoCode={0}
+                <PromoCode promoCode={"0"}
                            isDisabled={disablePromoButton}
                            giveDiscount={() => giveDiscountHandler()}/>
 
@@ -53,8 +57,17 @@ function MainPage(props) {
     );
 }
 
-const mapStateToProps = state => ({
-    promoCode: state.promoCode.value
-});
 
-export default connect(mapStateToProps, { handleChange })(MainPage);
+
+const mapStateToProps = (state) => {
+    return {
+        promoCode: state.promoCode.value
+    }
+};
+
+const mapActionsToProps = {
+    handleChange: handleChange
+};
+
+
+export default connect(mapStateToProps, mapActionsToProps)(MainPage);

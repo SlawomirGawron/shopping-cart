@@ -15,8 +15,13 @@ function PromoCode(props) {
     // States
     const [open, setOpen] = useState(false);
 
-    const handleChange = e => {
-        props.handleChange(e)
+    const handleChange = event => {
+        console.log(props);
+        console.log("Event" + event.target.value);
+        console.log("Even2" + event.target);
+        console.log("Even3" + event);
+
+        props.handleChange(event.target.value)
     };
 
     return (
@@ -64,9 +69,9 @@ function PromoCode(props) {
 }
 
 PromoCode.propTypes = {
-    promoCode: PropTypes.number.isRequired,
+    promoCode: PropTypes.any.isRequired,
     isDisabled: PropTypes.bool.isRequired,
-    giveDiscount: PropTypes.number.isRequired,
+    giveDiscount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
