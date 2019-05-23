@@ -10,9 +10,7 @@ import { PROMO_CODE } from "./types";
 export function handleChange(event) {
     return {
         type: PROMO_CODE,
-        payload: {
-            event: event
-        }
+        payload: event
     }
 }
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
-import './MainPage.scss';
 import SubTotal from '../SubTotal/SubTotal';
 import PickupSavings from '../PickupSavings/PickupSavings';
 import TaxesFees from "../TaxesFees/TaxesFees";
@@ -10,6 +9,7 @@ import PromoCode from "../PromoCode/PromoCode";
 import { connect } from "react-redux";
 import { handleChange } from "../../actions/promoCodeActions";
 
+import './MainPage.scss';
 // Fix sales tax and area code.***********************************************************
 
 
@@ -17,22 +17,19 @@ function MainPage(props) {
     // States
     const [total, setTotal] = useState(100);
     const [pickupSavings, setPickupSavings] = useState(-3.85);
-    const [taxes, setTaxes] = useState(0);
-    const [estimatedTotal, setEstimatedTotal] = useState(0);
+    const [promoMultiplier, setPromoMultiplier] = useState(1);
+
     const [disablePromoButton, setDisablePromoButton] = useState(false);
 
+    const taxes = ((total + pickupSavings) * 0.0875);
+    const estimatedTotal = (total + pickupSavings + taxes) * promoMultiplier;
+
     const giveDiscountHandler = () => {
-        if (props.promoCode === "Discount") {
-            setEstimatedTotal(estimatedTotal * 0.9);
+        if (props.promoCode === "discount") {
+            setPromoMultiplier(0.9);
             setDisablePromoButton(true);
         }
     };
-
-    useEffect( () => {
-        setTaxes((total + pickupSavings) * 0.0875)
-        setEstimatedTotal(total + pickupSavings + taxes)
-
-    });
 
     const roundTwoDecimal = (number) => {
         return Math.round( number * 1e2)/1e2;
@@ -61,7 +58,7 @@ function MainPage(props) {
 
 const mapStateToProps = (state) => {
     return {
-        promoCode: state.promoCode.value
+        promoCode: state.promoCode.value,
     }
 };
 

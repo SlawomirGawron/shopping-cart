@@ -16,12 +16,7 @@ function PromoCode(props) {
     const [open, setOpen] = useState(false);
 
     const handleChange = event => {
-        console.log(props);
-        console.log("Event" + event.target.value);
-        console.log("Even2" + event.target);
-        console.log("Even3" + event);
-
-        props.handleChange(event.target.value)
+        props.handleChange(event.target.value);
     };
 
     return (
