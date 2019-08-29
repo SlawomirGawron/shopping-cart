@@ -7,9 +7,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
-import './PromoCode.scss';
 import { connect } from 'react-redux';
 import { handleChange } from "../../actions/promoCodeActions";
+
+import './PromoCode.scss';
 
 function PromoCode(props) {
     // States
@@ -73,4 +74,5 @@ const mapStateToProps = state => ({
     promoCode: state.promoCode.value
 });
 
+// Instead of doing mapDispatchToProps, you can just do connect(mapstatetoprops, {actioncreator})(component).
 export default connect(mapStateToProps, {handleChange})(PromoCode);

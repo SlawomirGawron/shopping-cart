@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
 
+import './index.css';
+
+// Need to wrap application in a Provider for the store for React Redux to work.
+// You create a store in a seperate file, hence the import.
 ReactDOM.render(
     <Provider store={store}>
         <App/>

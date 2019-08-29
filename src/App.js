@@ -1,8 +1,7 @@
 import React from 'react';
-import './App.scss';
 import MainPage from './components/MainPage/MainPage';
 
-
+import './App.scss';
 /*
 * This application is mostly created using react-bootstrap.
 * */

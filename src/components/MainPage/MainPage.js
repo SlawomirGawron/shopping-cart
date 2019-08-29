@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import SubTotal from '../SubTotal/SubTotal';
 import PickupSavings from '../PickupSavings/PickupSavings';
@@ -14,16 +14,17 @@ import './MainPage.scss';
 
 
 function MainPage(props) {
-    // States
+    // States using React Hooks. If setMyState isn't needed, then consider making it a variables/constant instead.
     const [total, setTotal] = useState(100);
     const [pickupSavings, setPickupSavings] = useState(-3.85);
     const [promoMultiplier, setPromoMultiplier] = useState(1);
-
     const [disablePromoButton, setDisablePromoButton] = useState(false);
 
+    // Calculations
     const taxes = ((total + pickupSavings) * 0.0875);
     const estimatedTotal = (total + pickupSavings + taxes) * promoMultiplier;
 
+    // Helper functions.
     const giveDiscountHandler = () => {
         if (props.promoCode === "discount") {
             setPromoMultiplier(0.9);
@@ -44,7 +45,7 @@ function MainPage(props) {
                 <hr />
                 <EstimatedTotal total={roundTwoDecimal(estimatedTotal)}/>
                 <ItemDetails price={roundTwoDecimal(estimatedTotal)}/>
-                <hr/>
+                <hr />
                 <PromoCode promoCode={"0"}
                            isDisabled={disablePromoButton}
                            giveDiscount={() => giveDiscountHandler()}/>
@@ -55,16 +56,21 @@ function MainPage(props) {
 }
 
 
-
+// Maps states to properties for connect.
 const mapStateToProps = (state) => {
     return {
         promoCode: state.promoCode.value,
     }
 };
 
+// Maps action creators to dispatches. Look at ..actions.js. This is the shorthand version, meaning that it does a a call in the background.
 const mapActionsToProps = {
     handleChange: handleChange
 };
 
-
+// Connects the store to the component.
+// Store => createStore, actions, reducers
+// connect => MapStateToProps(what you want to get from the store), mapDispatchToProps(This is not reducers. This dispatches an action to the store,
+//                            meaning if you click this button then Redux will send that action to the store, the store will check it's reducers for that action [action.type], which updates the store)
+// Store and connect are sort of separate things.
 export default connect(mapStateToProps, mapActionsToProps)(MainPage);
