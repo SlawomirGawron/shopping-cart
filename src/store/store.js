@@ -1,7 +1,13 @@
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
+import { rootReducers, initialState } from 'src/store/reducers';
 
-const initialState={};
+const middleWare =  compose(
+    applyMiddleware(
+        thunk,
+    ),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 // In the previous sections, we defined the actions that represent the facts about “what happened” and the reducers that update the state according to those actions.
 // The Store is the object that brings them together. The store has the following responsibilities:
@@ -16,9 +22,9 @@ const initialState={};
 // Initial state can be undefined.
 // The last argument is optional.
 const store = createStore(
-    rootReducer,
+    rootReducers,
     initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.window.__REDUX_DEVTOOLS_EXTENSION__()
+    middleWare
 );
 
 export default store;

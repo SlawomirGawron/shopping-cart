@@ -4,7 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import './PickupSavings.scss';
+
+import 'src/components/PickupSavings/StoreDiscount.scss';
 
 const styles = {
     pickupSavings: {
@@ -20,10 +21,10 @@ const styles = {
 };
 
 
-function PickupSavings(props) {
+function StoreDiscount(props) {
     // Other
     const tooltip = (
-        <Tooltip id="pickup-savings-tooltip">
+        <Tooltip className="store-discount-tooltip">
             <p>
                 Picking up your order in the store helps cut costs, and we pass the savings onto you.
             </p>
@@ -31,9 +32,9 @@ function PickupSavings(props) {
     );
 
     return (
-        <div className="pickup-savings-row">
+        <div className="store-discount-row">
             <Row>
-                <Col med={6} className="pickup-savings-column">
+                <Col med={6} className="store-discount-column">
                     <OverlayTrigger placement="bottom" overlay={tooltip}>
                         <div style={styles.pickupSavings}>
                             Pickup Savings
@@ -48,8 +49,8 @@ function PickupSavings(props) {
     );
 }
 
-PickupSavings.propTypes = {
+StoreDiscount.propTypes = {
     price: PropTypes.number.isRequired,
 };
 
-export default PickupSavings;
+export default StoreDiscount;

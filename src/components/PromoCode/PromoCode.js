@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,17 +8,18 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
-import { connect } from 'react-redux';
-import { handleChange } from "../../actions/promoCodeActions";
+import { handlePromoCodeChange } from 'src/store/actions/promoCodeActions';
 
-import './PromoCode.scss';
+import 'src/components/PromoCode/PromoCode.scss';
 
 function PromoCode(props) {
+    const { handlePromoCodeChange } = props;
+
     // States
     const [open, setOpen] = useState(false);
 
     const handleChange = event => {
-        props.handleChange(event.target.value);
+        handlePromoCodeChange(event.target.value);
     };
 
     return (
@@ -75,4 +77,4 @@ const mapStateToProps = state => ({
 });
 
 // Instead of doing mapDispatchToProps, you can just do connect(mapstatetoprops, {actioncreator})(component).
-export default connect(mapStateToProps, {handleChange})(PromoCode);
+export default connect(mapStateToProps, {handlePromoCodeChange})(PromoCode);

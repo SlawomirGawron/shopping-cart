@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import './SubTotal.scss';
+
+import 'src/components/SubTotal/SubTotal.scss';
 
 function SubTotal(props) {
     return (

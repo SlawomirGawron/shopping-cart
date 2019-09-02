@@ -6,8 +6,9 @@ import Media from 'react-bootstrap/Media';
 import Collapse from 'react-bootstrap/Collapse';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import IGImage from '../../images/infinity-gauntlet.jpg';
-import './ItemDetails.scss';
+import IGImage from 'src/images/infinity-gauntlet.jpg';
+
+import 'src/components/ItemDetails/ItemDetails.scss';
 
 function ItemDetails(props) {
     // States
