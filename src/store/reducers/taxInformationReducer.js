@@ -1,7 +1,7 @@
 import { API_RESULT } from "src/store/actions/types";
 
 export const taxInformationInitialState =  {
-    result: ""
+    result: {}
 };
 
 // Determines what to do based on the action. Usually modifies state in some way, or adds to it.

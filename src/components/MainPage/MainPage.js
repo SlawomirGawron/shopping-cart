@@ -24,10 +24,7 @@ function MainPage(props) {
     const [pickupSavings, setPickupSavings] = useState(-3.85);
     const [promoMultiplier, setPromoMultiplier] = useState(1);
     const [disablePromoButton, setDisablePromoButton] = useState(false);
-
-    // Calculations
-    const taxes = ((total + pickupSavings) * 0.0875); // FIX----------------------
-    const estimatedTotal = (total + pickupSavings + taxes) * promoMultiplier;
+    const [province, setProvince] = useState("on");
 
     // Helper functions.
     const giveDiscountHandler = () => {
@@ -41,8 +38,22 @@ function MainPage(props) {
         return Math.round( number * 1e2)/1e2;
     };
 
+    const getSalesTaxRate = () => {
+        const { taxInformation } = props;
+        var salesTaxRate = 0;
+
+        console.log(taxInformation.result[province]);
+        //salesTaxRate = taxInformation.result[province]["hst"];
+
+
+        return 0.0875;
+    };
+
+    // Calculations
+    const taxes = ((total + pickupSavings) * getSalesTaxRate()); // FIX----------------------
+    const estimatedTotal = (total + pickupSavings + taxes) * promoMultiplier;
+
     useEffect(() => {
-        console.log("11111111111");
         getTaxInformationASync();
     },[getTaxInformationASync]);
 
@@ -78,7 +89,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     handlePromoCodeChange,
     getTaxInformationASync
-
 };
 
 // Connects the store to the component.

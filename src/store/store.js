@@ -9,6 +9,9 @@ const middleWare =  compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+// The store is just an object with props/states inside it. MapstatetoProps updates the components props to the state of the store => you can access the store through mapstatetoprops.
+// mapdispatch to props are the action creators/actions. which get sent/dispatched to the store. the store then looks through it's reducers for the action it received, and updates the store based on what the reducer does.
+
 // In the previous sections, we defined the actions that represent the facts about “what happened” and the reducers that update the state according to those actions.
 // The Store is the object that brings them together. The store has the following responsibilities:
 //  - Holds application state;
