@@ -1,4 +1,4 @@
-import { PROMO_CODE } from "src/store/actions/types";
+import { TOTAL } from "src/store/actions/types";
 
 // Action is just a plain object with type and payload.
 // Dispatch happens outside of action creator. i.e in main component, do mapDispatchToProps = {... => dispatch(myActionCreator(changes))}.
@@ -10,11 +10,10 @@ import { PROMO_CODE } from "src/store/actions/types";
 // };
 // dispatch() can be called at the end as well. look at notes.
 
-// Action creator for promoCode.
-export function promoCodeActionCreator(value) {
+// Action creator for taxInformationActionCreator. event is the value of payload when it gets dispatched to store.
+export function totalActionCreator(value) {
     return {
-        type: PROMO_CODE,
+        type: TOTAL,
         payload: value
     }
 }
-

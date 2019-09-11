@@ -5,14 +5,14 @@ import Col from 'react-bootstrap/Col';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
-import 'src/components/PickupSavings/StoreDiscount.scss';
+import 'src/components/StoreDiscount/StoreDiscount.scss';
 
 const styles = {
-    pickupSavings: {
+    storeDiscountText: {
         textDecoration: 'underline'
     },
 
-    totalSavings: {
+    storeDiscountNumber: {
         color: 'red',
         fontWeight: 800,
         borderStyle: 'solid',
@@ -36,13 +36,13 @@ function StoreDiscount(props) {
             <Row>
                 <Col med={6} className="store-discount-column">
                     <OverlayTrigger placement="bottom" overlay={tooltip}>
-                        <div style={styles.pickupSavings}>
-                            Pickup Savings
+                        <div style={styles.storeDiscountText}>
+                            Store Discount
                         </div>
                     </OverlayTrigger>
                 </Col>
-                <Col med={6} style={styles.totalSavings}>
-                    {props.price}
+                <Col med={6} style={styles.storeDiscountNumber}>
+                    {props.savings}
                 </Col>
             </Row>
         </div>
@@ -50,7 +50,7 @@ function StoreDiscount(props) {
 }
 
 StoreDiscount.propTypes = {
-    price: PropTypes.number.isRequired,
+    savings: PropTypes.number.isRequired,
 };
 
 export default StoreDiscount;

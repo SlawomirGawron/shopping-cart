@@ -8,18 +8,20 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
-import { handlePromoCodeChange } from 'src/store/actions/promoCodeActions';
+import { promoCodeActionCreator } from 'src/store/actions/promoCodeActions';
 
 import 'src/components/PromoCode/PromoCode.scss';
+import {getPromoCode} from "src/store/selectors/promoCodeSelectors";
+import {getTaxInformation} from "src/store/selectors/taxInformationSelectors";
 
 function PromoCode(props) {
-    const { handlePromoCodeChange } = props;
+    const { promoCodeActionCreator } = props;
 
     // States
     const [open, setOpen] = useState(false);
 
     const handleChange = event => {
-        handlePromoCodeChange(event.target.value);
+        promoCodeActionCreator(event.target.value);
     };
 
     return (
@@ -43,7 +45,7 @@ function PromoCode(props) {
                                         <FormControl
                                             type="text"
                                             placeholder="Enter promo code"
-                                            value={props.promoCode}
+                                            value={props.promoCode.code}
                                             onChange={handleChange}
                                         />
                                     </Form.Group>
@@ -67,14 +69,18 @@ function PromoCode(props) {
 }
 
 PromoCode.propTypes = {
-    promoCode: PropTypes.any.isRequired,
     isDisabled: PropTypes.bool.isRequired,
     giveDiscount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-    promoCode: state.promoCode.value
+    promoCode: getPromoCode(state)
 });
 
+// Maps action creators to dispatches. Look at ..actions.js. This is the shorthand version, meaning that it does a a call in the background.
+const mapDispatchToProps = {
+    promoCodeActionCreator: promoCodeActionCreator,
+};
+
 // Instead of doing mapDispatchToProps, you can just do connect(mapstatetoprops, {actioncreator})(component).
-export default connect(mapStateToProps, {handlePromoCodeChange})(PromoCode);
+export default connect(mapStateToProps, mapDispatchToProps)(PromoCode);

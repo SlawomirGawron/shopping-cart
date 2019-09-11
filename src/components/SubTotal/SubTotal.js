@@ -13,7 +13,7 @@ function SubTotal(props) {
                     Subtotal
                 </Col>
                 <Col md={6} className="sub-total-column">
-                    ${props.price}
+                    ${props.total}
                 </Col>
             </Row>
         </div>
@@ -21,7 +21,7 @@ function SubTotal(props) {
 }
 
 SubTotal.propTypes = {
-    price: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
 };
 
 export default SubTotal;

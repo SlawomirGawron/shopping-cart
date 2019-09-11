@@ -9,7 +9,7 @@ function TaxesFees(props) {
         <div className="taxes-fees-row">
             <Row>
                 <Col md={6} className="taxes-fees-column">
-                    Est. taxes & fees (based on 94085)
+                    Est. taxes & fees (for Ontario)
                 </Col>
                 <Col md={6} className="taxes-fees-column">
                     ${props.taxes}

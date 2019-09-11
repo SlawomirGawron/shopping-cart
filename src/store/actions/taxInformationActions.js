@@ -2,7 +2,7 @@ import { API_RESULT } from "src/store/actions/types";
 
 // Action is just a plain object with type and payload.
 // Dispatch happens outside of action creator. i.e in main component, do mapDispatchToProps = {... => dispatch(myActionCreator(changes))}.
-// export const handlePromoCodeChange = e => dispatch => {
+// export const promoCodeActionCreator = e => dispatch => {
 //     dispatch({
 //         type: PROMO_CODE,
 //         payload: event
@@ -10,8 +10,8 @@ import { API_RESULT } from "src/store/actions/types";
 // };
 // dispatch() can be called at the end as well. look at notes.
 
-// Action creator for getTaxInformation. event is the value of payload when it gets dispatched to store.
-export function getTaxInformation(value) {
+// Action creator for taxInformationActionCreator. event is the value of payload when it gets dispatched to store.
+export function taxInformationActionCreator(value) {
     return {
         type: API_RESULT,
         payload: value
@@ -21,7 +21,7 @@ export function getTaxInformation(value) {
 // action creator in thescope of thunk, all it is a function that dipatches aeither another action creator or an action.
 // last action creator has to dispatch an action.
 // get state has both promoCode and taxInformation in it
-export function getTaxInformationASync () {
+export function taxInformationActionCreatorAsync () {
     return async (dispatch, getState) => {
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/',
             targetUrl = 'http://api.salestaxapi.ca/v2/province/all';
@@ -32,13 +32,13 @@ export function getTaxInformationASync () {
             .then((data) => {
                 console.log(data);
                 console.log("----------------------------------------------------------------------");
-                dispatch(getTaxInformation(data));
+                dispatch(taxInformationActionCreator(data));
             })
             .catch((error) => {
                 console.log("Failed to fetch data from API.");
                 console.log(error);
                 dispatch(
-                    getTaxInformation({on: {
+                    taxInformationActionCreator({on: {
                         applicable: 0.13,
                         gst: 0.05,
                         hst: 0.13,
@@ -64,11 +64,11 @@ export function getTaxInformationASync () {
     //         .then((data) => {
     //             console.log("Inside fetch");
     //             console.log(data);
-    //             dispatch(getTaxInformation(data));
+    //             dispatch(taxInformationActionCreator(data));
     //         })
     //         .catch((error) => {
     //             console.log(error);
-    //             dispatch(getTaxInformation("Failed to fetch data from API."));
+    //             dispatch(taxInformationActionCreator("Failed to fetch data from API."));
     //         });
     // };
 
@@ -84,11 +84,11 @@ export function getTaxInformationASync () {
     //         .then((data) => {
     //             console.log("Inside fetch");
     //             console.log(data);
-    //             dispatch(getTaxInformation(data));
+    //             dispatch(taxInformationActionCreator(data));
     //         })
     //         .catch((error) => {
     //             console.log(error);
     //         });
-    //     dispatch(getTaxInformation("Failed to fetch data from API."));
+    //     dispatch(taxInformationActionCreator("Failed to fetch data from API."));
     // };
 }

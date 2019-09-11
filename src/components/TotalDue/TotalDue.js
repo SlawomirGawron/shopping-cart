@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import 'src/components/EstimatedTotal/EstimatedTotal.scss';
+import 'src/components/TotalDue/TotalDue.scss';
 
-function EstimatedTotal(props) {
+function TotalDue(props) {
     return (
         <div className="estimated-total-row">
             <Row>
                 <Col md={6} className="estimated-total-column">
                     <h2>
-                        Est. total
+                        Total
                     </h2>
                 </Col>
                 <Col md={6} className="estimated-total-column">
@@ -24,8 +24,8 @@ function EstimatedTotal(props) {
     );
 }
 
-EstimatedTotal.propTypes = {
+TotalDue.propTypes = {
     total: PropTypes.number.isRequired,
 };
 
-export default EstimatedTotal;
+export default TotalDue;
