@@ -1,41 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import TextField from '@material-ui/core/TextField';
 
 import 'src/common/TextFieldInput/TextFieldInput.scss';
 
 const styles = {
-    storeDiscountText: {
-        textDecoration: 'underline'
+    textFieldInputStyling: {
+        color: 'red'
     },
-
-    storeDiscountNumber: {
-        color: 'red',
-        fontWeight: 800,
-        borderStyle: 'solid',
-        borderColor: 'yellow'
-    }
 };
 
 
 function TextFieldInput(props) {
+    const { total, updateTotalInStore } = props;
+
+    const handleChange = (event) => {
+        updateTotalInStore(parseInt(event.target.value));
+    };
+
     return (
-        <div className="inputs">
-            <Row>
-                <Col med={6} style={styles.storeDiscountNumber}>
-                    Left
-                </Col>
-                <Col med={6} style={styles.storeDiscountNumber}>
-                    Right
-                </Col>
-            </Row>
+        <div className="text-field-input">
+            <TextField
+                id="outlined-number-input-box"
+                label="Enter Total"
+                value={total}
+                onChange={handleChange}
+                type="number"
+                className="outlined-number-input-box"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+                margin="normal"
+                variant="outlined"
+                style={styles.textFieldInputStyling}
+            />
         </div>
     );
 }
 
 TextFieldInput.propTypes = {
-    edit: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    updateTotalInStore: PropTypes.func.isRequired
 };
 
 export default TextFieldInput;

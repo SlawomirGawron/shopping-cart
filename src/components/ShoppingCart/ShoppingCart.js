@@ -15,15 +15,17 @@ import { getTaxInformation } from 'src/store/selectors/taxInformationSelectors';
 import 'src/components/ShoppingCart/ShoppingCart.scss';
 import {getTotal} from "src/store/selectors/totalSelectors";
 import {totalActionCreator} from "src/store/actions/totalActions";
+import {getStoreDiscount} from "src/store/selectors/storeDiscountSelectors";
+import {storeDiscountActionCreator} from "src/store/actions/storeDiscountActions";
+import {getProvince} from "src/store/selectors/provinceSelectors";
+import {provinceActionCreator} from "src/store/actions/provinceActionCreators";
 
 function ShoppingCart(props) {
-    const { taxInformationActionCreatorAsync, promoCode, total } = props;
+    const { taxInformationActionCreatorAsync, taxInformation, promoCode, total, storeDiscount, province } = props;
 
     // States using React Hooks. If setMyState isn't needed, then consider making it a variables/constant instead.
-    const [storeDiscount, setStoreDiscount] = useState(-3.00);
     const [promoMultiplier, setPromoMultiplier] = useState(1);
     const [disablePromoButton, setDisablePromoButton] = useState(false);
-    const [province, setProvince] = useState("on");
 
     // Helper functions.
     const giveDiscountHandler = () => {
@@ -38,11 +40,7 @@ function ShoppingCart(props) {
     };
 
     const getSalesTaxRate = () => {
-        const { taxInformation } = props;
-
-        console.log(taxInformation.result[province]["hst"]);
-
-        return taxInformation.result[province]["hst"];
+        return taxInformation.result[province]["applicable"];
     };
 
     // Calculations
@@ -58,7 +56,7 @@ function ShoppingCart(props) {
             <Container className="main-page-container">
                 <SubTotal total={roundTwoDecimal(total)} />
                 <StoreDiscount savings={roundTwoDecimal(storeDiscount)}/>
-                <TaxesFees taxes={roundTwoDecimal(taxes)}/>
+                <TaxesFees province={province} taxes={roundTwoDecimal(taxes)}/>
                 <hr />
                 <TotalDue total={roundTwoDecimal(totalDue)}/>
                 <ItemDetails price={roundTwoDecimal(totalDue)}/>
@@ -77,7 +75,9 @@ const mapStateToProps = (state) => {
     return {
         taxInformation: getTaxInformation(state),
         promoCode: getPromoCode(state),
-        total: getTotal(state)
+        total: getTotal(state),
+        storeDiscount: getStoreDiscount(state),
+        province: getProvince(state)
     }
 };
 
@@ -85,7 +85,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     promoCodeActionCreator: promoCodeActionCreator,
     taxInformationActionCreatorAsync: taxInformationActionCreatorAsync,
-    totalActionCreator: totalActionCreator
+    totalActionCreator: totalActionCreator,
+    storeDiscountActionCreator: storeDiscountActionCreator,
+    provinceActionCreator: provinceActionCreator
 };
 
 // Connects the store to the component.

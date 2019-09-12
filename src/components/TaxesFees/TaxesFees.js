@@ -5,14 +5,15 @@ import Col from 'react-bootstrap/Col';
 import 'src/components/TaxesFees/TaxesFees.scss';
 
 function TaxesFees(props) {
+    const { taxes, province } = props;
     return (
         <div className="taxes-fees-row">
             <Row>
                 <Col md={6} className="taxes-fees-column">
-                    Est. taxes & fees (for Ontario)
+                    Taxes ({province})
                 </Col>
                 <Col md={6} className="taxes-fees-column">
-                    ${props.taxes}
+                    ${taxes}
                 </Col>
             </Row>
         </div>
@@ -21,6 +22,7 @@ function TaxesFees(props) {
 
 TaxesFees.propTypes = {
     taxes: PropTypes.number.isRequired,
+    province: PropTypes.string.isRequired,
 };
 
 export default TaxesFees;

@@ -1,4 +1,4 @@
-import React, { useEffect  } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import CheckboxInput from "src/common/CheckboxInput/CheckboxInput";
@@ -16,13 +16,25 @@ import 'src/components/BaseDataInputs/BaseDataInputs.scss';
 
 
 function BaseDataInputs(props) {
-    const { total } = props;
+    const { total, totalActionCreator, storeDiscount, storeDiscountActionCreator, province, provinceActionCreator  } = props;
+
+    const updateTotalInStore = (input) => {
+        totalActionCreator(input);
+    };
+
+    const updateStoreDiscountInStore = (input) => {
+        storeDiscountActionCreator(input);
+    };
+
+    const updateProvinceInStore = (input) => {
+        provinceActionCreator(input);
+    };
 
     return (
         <div className="base-data-inputs">
-            <TextFieldInput edit={4}/>
-            <CheckboxInput edit={5}/>
-            <SelectInput edit={3}/>
+            <TextFieldInput total={total} updateTotalInStore={updateTotalInStore} />
+            <CheckboxInput storeDiscount={storeDiscount} updateStoreDiscountInStore={updateStoreDiscountInStore}/>
+            <SelectInput province={province} updateProvinceInStore={updateProvinceInStore} />
         </div>
     );
 }

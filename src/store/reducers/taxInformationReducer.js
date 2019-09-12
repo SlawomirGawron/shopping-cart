@@ -22,8 +22,6 @@ export const taxInformationInitialState =  {
 
 // reducers cahnges the value of the store.
 export default function taxInformationReducer(state = taxInformationInitialState, action) {
-    console.log("---------------------------------------------------");
-    console.log({state});
     switch(action.type) {
         case API_RESULT:
             return {

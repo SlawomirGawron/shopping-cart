@@ -30,13 +30,10 @@ export function taxInformationActionCreatorAsync () {
             .then(res => res.json()
             )
             .then((data) => {
-                console.log(data);
-                console.log("----------------------------------------------------------------------");
+
                 dispatch(taxInformationActionCreator(data));
             })
             .catch((error) => {
-                console.log("Failed to fetch data from API.");
-                console.log(error);
                 dispatch(
                     taxInformationActionCreator({on: {
                         applicable: 0.13,
@@ -51,44 +48,4 @@ export function taxInformationActionCreatorAsync () {
                     ));
             });
     };
-
-    // return async (dispatch, getState) => {
-    //     var result = "api request";
-    //     console.log(result);
-    //
-    //     // http://api.salestaxapi.ca/v2/province/all
-    //
-    //     await fetch('http://jsonplaceholder.typicode.com/users')
-    //         .then(res => res.json()
-    //         )
-    //         .then((data) => {
-    //             console.log("Inside fetch");
-    //             console.log(data);
-    //             dispatch(taxInformationActionCreator(data));
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //             dispatch(taxInformationActionCreator("Failed to fetch data from API."));
-    //         });
-    // };
-
-    // broken
-    // return async (dispatch, getState) => {
-    //     var result = "api request";
-    //     console.log(result);
-    //
-    //     await fetch('http://jsonplaceholder.typicode.com/users')
-    //         .then(res => {
-    //             res.json()
-    //         })
-    //         .then((data) => {
-    //             console.log("Inside fetch");
-    //             console.log(data);
-    //             dispatch(taxInformationActionCreator(data));
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    //     dispatch(taxInformationActionCreator("Failed to fetch data from API."));
-    // };
 }

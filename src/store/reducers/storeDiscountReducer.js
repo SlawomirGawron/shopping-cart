@@ -1,6 +1,6 @@
 import { STORE_DISCOUNT } from "src/store/actions/types";
 
-export const storeDiscountInitialState = -3.00;
+export const storeDiscountInitialState = 0;
 
 // Determines what to do based on the action. Usually modifies state in some way, or adds to it.
 // Reducers specify how the application's state changes in response to actions sent to the store. ACTION.TYPE

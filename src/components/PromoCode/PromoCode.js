@@ -9,10 +9,10 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'
 import { promoCodeActionCreator } from 'src/store/actions/promoCodeActions';
+import {getPromoCode} from "src/store/selectors/promoCodeSelectors";
 
 import 'src/components/PromoCode/PromoCode.scss';
-import {getPromoCode} from "src/store/selectors/promoCodeSelectors";
-import {getTaxInformation} from "src/store/selectors/taxInformationSelectors";
+
 
 function PromoCode(props) {
     const { promoCodeActionCreator } = props;
