@@ -1,3 +1,57 @@
+# Slawomir Gawron Shopping Cart
+
+The following website was created using 
+ - React
+ - Redux 
+ - React Hooks
+ - HTML
+ - CSS/SCSS
+ - Canadian Sales Tax API
+ 
+ The primary purpose of this website is to allow potential employers to have access to my Shopping Cart project. 
+ This project is intended to demonstrate my skills in some of the newer/more complex parts of React/front end development. 
+ My application uses redux to store common states that are used in multiple parts of the application. Rather than hard coding
+ ever changing sales tax information; it subscribes to the Canadian Sales Tax API for correct and up to date sales tax information 
+ in Canada. Lastly, my application uses hooks which is the new way of writing React components.
+ 
+ The majority of my React knowledge comes from diligent self study, while working regular hours at my current employment.
+ I wish I had unlimited time to fine tune my projects, however I think my focus would be better served on creating additional cool 
+ and complex projects.  
+ 
+ At the end of the day, I'm still a junior developer; hence my work may have some flaws. However, I'm a quick learner and I like producing quality work 
+ (if something needs changing/improvement, I'll gladly do it).
+ 
+ ## Notes: 
+ 
+ store = {
+ 
+     total: integer
+     storeDiscount: negative integer
+     province: string
+     taxInformation: {result: JSON}
+     promoCode: {code: string}
+     
+ }
+   
+ result: {
+ 
+         on: {
+             applicable: 0.13
+             gst: 0.05,
+             hst: 0.13,
+             pst: 0.08,
+             source: "Wikipedia (https://en.wikipedia.org/wiki/Sales_taxes_in_Canada), accessed May 31 2019.",
+             start: "2008-01-01 00:00:00",
+             type: "hst",
+             updated_at: "2019-05-31 14:57:21"
+         }
+  }
+   
+  
+ 
+ 
+# Boilerplate React App commands 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

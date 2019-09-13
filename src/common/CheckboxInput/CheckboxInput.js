@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import 'src/common/CheckboxInput/CheckboxInput.scss';
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column'
+    },
+    formControl: {
+    },
+}));
+
 function CheckboxInput(props) {
+    const classes = useStyles();
     const { updateStoreDiscountInStore } = props;
 
     const [state, setState] = useState({
@@ -49,31 +64,35 @@ function CheckboxInput(props) {
     });
 
     return (
-        <div className="checkbox-input-boxes">
-            <FormGroup row>
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={state.holidaySpecial.checked}
-                            onChange={handleChange('holidaySpecial')}
-                            value="holidaySpecial"
-                            color="primary"
-                        />
-                    }
-                    label="Holiday Special"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={state.walkInSpecial.checked}
-                            onChange={handleChange('walkInSpecial')}
-                            value="walkInSpecial"
-                            color="secondary"
-                        />
-                    }
-                    label="Walk-In Special"
-                />
-            </FormGroup>
+        <div className={classes.root}>
+            <FormLabel component="legend">Store Discount</FormLabel>
+            <FormControl component="fieldset" className={classes.formControl}>
+
+                <FormGroup row>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={state.holidaySpecial.checked}
+                                onChange={handleChange('holidaySpecial')}
+                                value="holidaySpecial"
+                                color="primary"
+                            />
+                        }
+                        label="Holiday Special"
+                    />
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={state.walkInSpecial.checked}
+                                onChange={handleChange('walkInSpecial')}
+                                value="walkInSpecial"
+                                color="secondary"
+                            />
+                        }
+                        label="Walk-In Special"
+                    />
+                </FormGroup>
+            </FormControl>
         </div>
     );
 }

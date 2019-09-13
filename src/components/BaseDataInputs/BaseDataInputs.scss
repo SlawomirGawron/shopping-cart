@@ -1,0 +1,19 @@
+@import "../../common/utilities/_variables.scss";
+
+.base-data-inputs {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  width: 25vw;
+  height: 25vh;
+  border: 2px solid;
+  padding: 2vh;
+  box-shadow: 1px 1px 10px green;
+
+  //background: $game-board-fallback-background;
+  //background: $game-board-background1;
+  //background: $game-board-background2;
+}

@@ -1,56 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
 
 import 'src/components/StoreDiscount/StoreDiscount.scss';
 
 const styles = {
-    storeDiscountText: {
-        textDecoration: 'underline'
+    storeDiscountColumnLeftText: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        color: 'black',
+        marginLeft: '1rem'
     },
 
-    storeDiscountNumber: {
-        color: 'red',
-        fontWeight: 800,
-        borderStyle: 'solid',
-        borderColor: 'yellow'
+    storeDiscountColumnRight: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        color: 'black',
+    },
+
+    info: {
+        color: 'blue',
     }
 };
 
+const hoverText = "Discount applied based on Holiday Special or Walk-In Special selection.";
 
 function StoreDiscount(props) {
-    // Other
-    const tooltip = (
-        <Tooltip className="store-discount-tooltip">
-            <p>
-                Picking up your order in the store helps cut costs, and we pass the savings onto you.
-            </p>
-        </Tooltip>
-    );
+    const { storeDiscount } = props;
 
     return (
-        <div className="store-discount-row">
-            <Row>
-                <Col med={6} className="store-discount-column">
-                    <OverlayTrigger placement="bottom" overlay={tooltip}>
-                        <div style={styles.storeDiscountText}>
-                            Store Discount
-                        </div>
-                    </OverlayTrigger>
-                </Col>
-                <Col med={6} style={styles.storeDiscountNumber}>
-                    {props.savings}
-                </Col>
-            </Row>
+        <div className="store-discount">
+            <Grid container
+                  className="store-discount-grid"
+                  justify="flex-end"
+                  spacing={0}
+                  direction="row"
+                  alignItems="center"
+            >
+                <Grid item xs={12} sm={12} md={6} lg={6}  className="store-discount-column-left"  >
+                    <Tooltip title={hoverText} style={styles.info}>
+                        <InfoIcon />
+                    </Tooltip>
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.storeDiscountColumnLeftText}>
+                        Store Discount
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6}  className="store-discount-column-right" >
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.storeDiscountColumnRight}>
+                        {storeDiscount}
+                    </Typography>
+                </Grid>
+            </Grid>
         </div>
     );
 }
 
 StoreDiscount.propTypes = {
-    savings: PropTypes.number.isRequired,
+    storeDiscount: PropTypes.number.isRequired,
 };
 
 export default StoreDiscount;

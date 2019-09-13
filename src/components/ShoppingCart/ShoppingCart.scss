@@ -1,9 +1,17 @@
-.main-page-grid {
-  margin-top: 10px;
+@import "../../common/utilities/_variables.scss";
+
+.shopping-cart-grid {
+  //margin: 1rem;
 }
 
-.main-page-container {
-  width: 350px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 1em;
+.shopping-cart-container {
+  width: 50vw;
+  height: 75vh;
+  border: 2px solid purple;
+  padding: 2vh;
+  box-shadow: 1px 1px 10px green;
+
+  //background: $game-board-fallback-background;
+  //background: $game-board-background1;
+  //background: $game-board-background2;
 }

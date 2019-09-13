@@ -1,3 +1,10 @@
-.sub-total-row {
-  padding-bottom: 0.5em;
+.sub-total {
+  display: flex;
+  flex: 1;
+}
+
+.sub-total-column-left {
+}
+
+.sub-total-column-right {
 }

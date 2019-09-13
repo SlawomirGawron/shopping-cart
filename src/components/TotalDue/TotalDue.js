@@ -1,25 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 import 'src/components/TotalDue/TotalDue.scss';
 
+const styles = {
+    totalColumnLeft: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        color: 'black',
+    },
+
+    totalColumnRight: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        color: 'black',
+        borderTop: '2px solid',
+    }
+};
+
+
 function TotalDue(props) {
+    const { total } = props;
+
     return (
-        <div className="estimated-total-row">
-            <Row>
-                <Col md={6} className="estimated-total-column">
-                    <h2>
+        <div className="total-due">
+            <Grid container
+                  className="total-due-grid"
+                  justify="flex-end"
+                  spacing={0}
+                  direction="row"
+                  alignItems="center"
+            >
+                <Grid item xs={12} sm={12} md={6} lg={6}  className="total-due-column-left"  >
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.totalColumnLeft}>
                         Total
-                    </h2>
-                </Col>
-                <Col md={6} className="estimated-total-column">
-                    <h2>
-                        ${props.total}
-                    </h2>
-                </Col>
-            </Row>
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={6}  className="total-due-column-right" >
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.totalColumnRight}>
+                        $ {total}
+                    </Typography>
+                </Grid>
+            </Grid>
         </div>
     );
 }

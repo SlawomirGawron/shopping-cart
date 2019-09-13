@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import SubTotal from 'src/components/SubTotal/SubTotal';
 import StoreDiscount from 'src/components/StoreDiscount/StoreDiscount';
-import TaxesFees from 'src/components/TaxesFees/TaxesFees';
+import SalesTax from 'src/components/SalesTax/SalesTax';
 import TotalDue from 'src/components/TotalDue/TotalDue';
 import ItemDetails from 'src/components/ItemDetails/ItemDetails';
 import PromoCode from 'src/components/PromoCode/PromoCode';
@@ -44,26 +44,42 @@ function ShoppingCart(props) {
     };
 
     // Calculations
-    const taxes = ((total + storeDiscount) * getSalesTaxRate());
-    const totalDue = (total + storeDiscount + taxes) * promoMultiplier;
+    const totalSalesTax = ((total + storeDiscount) * getSalesTaxRate());
+    const totalDue = (total + storeDiscount + totalSalesTax) * promoMultiplier;
 
     useEffect(() => {
         taxInformationActionCreatorAsync();
     },[taxInformationActionCreatorAsync]);
 
     return (
-        <div className="main-page-grid">
-            <Container className="main-page-container">
-                <SubTotal total={roundTwoDecimal(total)} />
-                <StoreDiscount savings={roundTwoDecimal(storeDiscount)}/>
-                <TaxesFees province={province} taxes={roundTwoDecimal(taxes)}/>
-                <hr />
-                <TotalDue total={roundTwoDecimal(totalDue)}/>
-                <ItemDetails price={roundTwoDecimal(totalDue)}/>
-                <hr />
-                <PromoCode isDisabled={disablePromoButton}
-                           giveDiscount={() => giveDiscountHandler()}/>
+        <div className="shopping-cart-grid">
+            <Container className="shopping-cart-container">
+                <SubTotal
+                    total={roundTwoDecimal(total)}
+                />
+                <StoreDiscount
+                    storeDiscount={roundTwoDecimal(storeDiscount)}
+                />
+                <SalesTax
+                    province={province}
+                    taxes={roundTwoDecimal(totalSalesTax)}
+                />
+                <TotalDue
+                    total={roundTwoDecimal(totalDue)}
+                />
 
+                <hr />
+
+                <ItemDetails
+                    price={roundTwoDecimal(total)}
+                />
+
+                <hr />
+
+                <PromoCode
+                    isDisabled={disablePromoButton}
+                    giveDiscount={() => giveDiscountHandler()}
+                />
             </Container>
         </div>
     );

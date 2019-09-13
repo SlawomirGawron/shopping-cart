@@ -1,4 +1,4 @@
-.item-detail {
+.main-app {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -6,4 +6,12 @@
   align-items: center;
   min-height: 100%;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 179px) {
+  .main-app {
+    overflow-x: auto;
+  }
 }
