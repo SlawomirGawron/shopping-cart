@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-import 'src/common/TextFieldInput/TextFieldInput.scss';
+import 'src/components/BaseDataInputs/TextFieldInput/TextFieldInput.scss';
 
 const styles = {
-    textFieldInputStyling: {
-        color: 'red'
+    textFieldInput: {
+        display: "flex",
+        flex: "1",
     },
 };
 
@@ -32,7 +33,7 @@ function TextFieldInput(props) {
                 }}
                 margin="normal"
                 variant="outlined"
-                style={styles.textFieldInputStyling}
+                style={styles.textFieldInput}
             />
         </div>
     );

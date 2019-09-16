@@ -6,7 +6,7 @@ import Media from 'react-bootstrap/Media';
 import Card from 'react-bootstrap/Card';
 import IGImage from 'src/images/infinity-gauntlet.jpg';
 
-import 'src/components/ItemDetails/Item/Item.scss';
+import 'src/components/ShoppingCart/ItemDetails/Item/Item.scss';
 
 const styles = {
     itemColumnLeft: {

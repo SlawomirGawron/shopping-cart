@@ -3,44 +3,46 @@ import PropTypes from 'prop-types';
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-import 'src/components/SubTotal/SubTotal.scss';
+import 'src/components/ShoppingCart/TotalDue/TotalDue.scss';
 
 const styles = {
-    subTotalColumnLeft: {
+    totalColumnLeft: {
         display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'center',
         color: 'black',
     },
 
-    subTotalColumnRight: {
+    totalColumnRight: {
         display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'center',
         color: 'black',
+        borderTop: '2px solid',
     }
 };
 
-function SubTotal(props) {
+
+function TotalDue(props) {
     const { total } = props;
 
     return (
-        <div className="sub-total">
+        <div className="total-due">
             <Grid container
-                  className="sub-total-grid"
+                  className="total-due-grid"
                   justify="flex-end"
                   spacing={0}
                   direction="row"
                   alignItems="center"
             >
-                <Grid item xs={12} sm={12} md={6} lg={6}  className="sub-total-column-left"  >
-                    <Typography color="inherit" variant="body1" gutterBottom style={styles.subTotalColumnLeft}>
-                        Subtotal
+                <Grid item xs={6} sm={6} md={6} lg={6}  className="total-due-column-left"  >
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.totalColumnLeft}>
+                        Total
                     </Typography>
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}  className="sub-total-column-right" >
-                    <Typography color="inherit" variant="body1" gutterBottom style={styles.subTotalColumnRight}>
-                        {total}
+                <Grid item xs={6} sm={6} md={6} lg={6}  className="total-due-column-right" >
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.totalColumnRight}>
+                        $ {total}
                     </Typography>
                 </Grid>
             </Grid>
@@ -48,8 +50,8 @@ function SubTotal(props) {
     );
 }
 
-SubTotal.propTypes = {
+TotalDue.propTypes = {
     total: PropTypes.number.isRequired,
 };
 
-export default SubTotal;
+export default TotalDue;

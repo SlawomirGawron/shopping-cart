@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-import 'src/components/PromoCode/PromoCodeInput/PromoCodeInput.scss';
+import 'src/components/ShoppingCart/PromoCode/PromoCodeInput/PromoCodeInput.scss';
 
 function PromoCodeInput(props) {
     const { isDisabled, giveDiscount, handleChange,promoCode } = props;
@@ -38,7 +38,7 @@ function PromoCodeInput(props) {
 }
 
 PromoCodeInput.propTypes = {
-    promoCode: PropTypes.string.isRequired,
+    promoCode: PropTypes.object.isRequired,
     isDisabled: PropTypes.bool.isRequired,
     giveDiscount: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired

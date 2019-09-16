@@ -1,17 +1,46 @@
 @import "../../common/utilities/_variables.scss";
 
-.shopping-cart-grid {
-  //margin: 1rem;
-}
-
-.shopping-cart-container {
-  width: 50vw;
-  height: 75vh;
-  border: 2px solid purple;
+.shopping-cart {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 48%;
+  width: 100%;
   padding: 2vh;
-  box-shadow: 1px 1px 10px green;
+
+  margin-top: 1%;
+  border: 2px solid black;
+  -webkit-box-shadow: 0px 0px 10px green;
+  -khtml-box-shadow: 0px 0px 10px green;
+  -moz-box-shadow: 0px 0px 10px green;
+  box-shadow: 0px 0px 10px green;
 
   //background: $game-board-fallback-background;
   //background: $game-board-background1;
   //background: $game-board-background2;
+}
+
+.shopping-cart-container {
+}
+
+@media screen and (max-height: 500px) {
+  .shopping-cart {
+    height: 250px;
+    margin-top: 0;
+    -webkit-box-shadow: 0px 5px 10px green;
+    -khtml-box-shadow: 0px 5px 10px green;
+    -moz-box-shadow: 0px 5px 10px green;
+    box-shadow: 0px 5px 10px green;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .shopping-cart {
+    width: 370px;
+    box-shadow: none;
+    margin-top: 0;
+  }
 }

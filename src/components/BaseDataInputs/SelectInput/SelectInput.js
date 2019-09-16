@@ -7,12 +7,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import 'src/common/SelectInput/SelectInput.scss';
+import 'src/components/BaseDataInputs/SelectInput/SelectInput.scss';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
+    selectInput: {
+        display: "flex",
+        flex: "1",
     },
     formControl: {
         margin: theme.spacing(1),
@@ -32,7 +32,7 @@ function SelectInput(props) {
     }
 
     return (
-        <div className="select-input">
+        <div className={classes.selectInput}>
             <FormControl className={classes.formControl}>
                 <InputLabel shrink htmlFor="province-label-placeholder">
                     Provinces

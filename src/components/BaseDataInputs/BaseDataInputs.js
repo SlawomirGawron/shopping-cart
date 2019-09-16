@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CheckboxInput from "src/common/CheckboxInput/CheckboxInput";
-import TextFieldInput from "src/common/TextFieldInput/TextFieldInput";
-import SelectInput from "src/common/SelectInput/SelectInput";
+import CheckboxInput from "src/components/BaseDataInputs/CheckboxInput/CheckboxInput";
+import TextFieldInput from "src/components/BaseDataInputs/TextFieldInput/TextFieldInput";
+import SelectInput from "src/components/BaseDataInputs/SelectInput/SelectInput";
 
 import {getTotal} from "src/store/selectors/totalSelectors";
 import {totalActionCreator} from "src/store/actions/totalActions";

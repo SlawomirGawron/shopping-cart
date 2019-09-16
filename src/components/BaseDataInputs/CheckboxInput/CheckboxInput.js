@@ -7,14 +7,15 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import 'src/common/CheckboxInput/CheckboxInput.scss';
+import 'src/components/BaseDataInputs/CheckboxInput/CheckboxInput.scss';
 
 const useStyles = makeStyles(theme => ({
-    root: {
+    checkboxInput: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        flex: "1",
     },
     formControl: {
     },
@@ -64,10 +65,9 @@ function CheckboxInput(props) {
     });
 
     return (
-        <div className={classes.root}>
+        <div className={classes.checkboxInput}>
             <FormLabel component="legend">Store Discount</FormLabel>
             <FormControl component="fieldset" className={classes.formControl}>
-
                 <FormGroup row>
                     <FormControlLabel
                         control={

@@ -8,11 +8,11 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-import PromoCodeInput from "src/components/PromoCode/PromoCodeInput/PromoCodeInput";
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
+import PromoCodeInput from "src/components/ShoppingCart/PromoCode/PromoCodeInput/PromoCodeInput";
 
-import 'src/components/PromoCode/PromoCode.scss';
+import 'src/components/ShoppingCart/PromoCode/PromoCode.scss';
 
 const hoverText = "discount";
 

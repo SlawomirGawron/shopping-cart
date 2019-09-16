@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 
-import 'src/components/StoreDiscount/StoreDiscount.scss';
+import 'src/components/ShoppingCart/StoreDiscount/StoreDiscount.scss';
 
 const styles = {
     storeDiscountColumnLeftText: {
@@ -42,7 +42,7 @@ function StoreDiscount(props) {
                   direction="row"
                   alignItems="center"
             >
-                <Grid item xs={12} sm={12} md={6} lg={6}  className="store-discount-column-left"  >
+                <Grid item xs={6} sm={6} md={6} lg={6}  className="store-discount-column-left"  >
                     <Tooltip title={hoverText} style={styles.info}>
                         <InfoIcon />
                     </Tooltip>
@@ -50,7 +50,7 @@ function StoreDiscount(props) {
                         Store Discount
                     </Typography>
                 </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}  className="store-discount-column-right" >
+                <Grid item xs={6} sm={6} md={6} lg={6}  className="store-discount-column-right" >
                     <Typography color="inherit" variant="body1" gutterBottom style={styles.storeDiscountColumnRight}>
                         {storeDiscount}
                     </Typography>

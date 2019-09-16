@@ -1,24 +1,26 @@
 import React, { useState, useEffect  } from 'react';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
-import SubTotal from 'src/components/SubTotal/SubTotal';
-import StoreDiscount from 'src/components/StoreDiscount/StoreDiscount';
-import SalesTax from 'src/components/SalesTax/SalesTax';
-import TotalDue from 'src/components/TotalDue/TotalDue';
-import ItemDetails from 'src/components/ItemDetails/ItemDetails';
-import PromoCode from 'src/components/PromoCode/PromoCode';
+
+import SubTotal from 'src/components/ShoppingCart/SubTotal/SubTotal';
+import StoreDiscount from 'src/components/ShoppingCart/StoreDiscount/StoreDiscount';
+import SalesTax from 'src/components/ShoppingCart/SalesTax/SalesTax';
+import TotalDue from 'src/components/ShoppingCart/TotalDue/TotalDue';
+import ItemDetails from 'src/components/ShoppingCart/ItemDetails/ItemDetails';
+import PromoCode from 'src/components/ShoppingCart/PromoCode/PromoCode';
+
 import { promoCodeActionCreator } from 'src/store/actions/promoCodeActions';
 import { taxInformationActionCreatorAsync } from 'src/store/actions/taxInformationActions';
 import { getPromoCode } from 'src/store/selectors/promoCodeSelectors';
 import { getTaxInformation } from 'src/store/selectors/taxInformationSelectors';
-
-import 'src/components/ShoppingCart/ShoppingCart.scss';
 import {getTotal} from "src/store/selectors/totalSelectors";
 import {totalActionCreator} from "src/store/actions/totalActions";
 import {getStoreDiscount} from "src/store/selectors/storeDiscountSelectors";
 import {storeDiscountActionCreator} from "src/store/actions/storeDiscountActions";
 import {getProvince} from "src/store/selectors/provinceSelectors";
 import {provinceActionCreator} from "src/store/actions/provinceActionCreators";
+
+import 'src/components/ShoppingCart/ShoppingCart.scss';
 
 function ShoppingCart(props) {
     const { taxInformationActionCreatorAsync, taxInformation, promoCode, total, storeDiscount, province } = props;
@@ -52,7 +54,7 @@ function ShoppingCart(props) {
     },[taxInformationActionCreatorAsync]);
 
     return (
-        <div className="shopping-cart-grid">
+        <div className="shopping-cart">
             <Container className="shopping-cart-container">
                 <SubTotal
                     total={roundTwoDecimal(total)}
@@ -67,15 +69,9 @@ function ShoppingCart(props) {
                 <TotalDue
                     total={roundTwoDecimal(totalDue)}
                 />
-
-                <hr />
-
                 <ItemDetails
                     price={roundTwoDecimal(total)}
                 />
-
-                <hr />
-
                 <PromoCode
                     isDisabled={disablePromoButton}
                     giveDiscount={() => giveDiscountHandler()}

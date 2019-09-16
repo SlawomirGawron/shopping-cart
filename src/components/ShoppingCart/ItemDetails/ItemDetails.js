@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Item from 'src/components/ItemDetails/Item/Item';
+import Item from 'src/components/ShoppingCart/ItemDetails/Item/Item';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 
-import 'src/components/ItemDetails/ItemDetails.scss';
+import 'src/components/ShoppingCart/ItemDetails/ItemDetails.scss';
 
 function ItemDetails(props) {
     const { price } = props;
