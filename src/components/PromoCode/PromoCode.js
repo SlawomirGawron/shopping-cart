@@ -1,69 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Collapse from 'react-bootstrap/Collapse';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl'
 import { promoCodeActionCreator } from 'src/store/actions/promoCodeActions';
 import {getPromoCode} from "src/store/selectors/promoCodeSelectors";
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Typography from '@material-ui/core/Typography';
+import PromoCodeInput from "src/components/PromoCode/PromoCodeInput/PromoCodeInput";
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
 
 import 'src/components/PromoCode/PromoCode.scss';
 
+const hoverText = "discount";
+
+const styles = {
+    promoTitle: {
+        marginRight: '1rem',
+    },
+    info: {
+        color: 'blue',
+    },
+};
 
 function PromoCode(props) {
-    const { promoCodeActionCreator } = props;
-
-    // States
-    const [open, setOpen] = useState(false);
+    const { promoCodeActionCreator, isDisabled, giveDiscount, promoCode } = props;
 
     const handleChange = event => {
         promoCodeActionCreator(event.target.value);
     };
 
     return (
-        <div className="promo-code-row">
-            <Button
-                className="promo-code-button"
-                variant="outline-light"
-                onClick={() => setOpen(!open)}
-            >
-                {(open === false) ? "Apply ": "Hide "} promo code
-                {(open === false) ? " +": " -"}
-            </Button>
-            <Collapse in={open}>
-                <div>
-                    <Card>
-                        <Row className="promo-code-grid">
-                            <Col md={12}>
-                                <Form>
-                                    <Form.Group controlId="formInlineName">
-                                        <Form.Label>Promo Code</Form.Label>
-                                        <FormControl
-                                            type="text"
-                                            placeholder="Enter promo code"
-                                            value={props.promoCode.code}
-                                            onChange={handleChange}
-                                        />
-                                    </Form.Group>
-                                    <Button
-                                        block
-                                        variant="success"
-                                        className="btn-success"
-                                        disabled={props.isDisabled}
-                                        onClick={props.giveDiscount}
-                                    >
-                                        Apply
-                                    </Button>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Card>
-                </div>
-            </Collapse>
+        <div className="promo-code">
+            <ExpansionPanel className="promo-code-expansion-panel">
+                <ExpansionPanelSummary
+                    className="promo-code-expansion-panel-summary"
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="promo-code-content"
+                    id="promo-code-header"
+                >
+
+                    <Typography color="inherit" variant="body1" gutterBottom style={styles.promoTitle}>
+                        Promo Code
+                    </Typography>
+                    <Tooltip title={hoverText} style={styles.info}>
+                        <InfoIcon />
+                    </Tooltip>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails className="promo-code-expansion-panel-details">
+                    <PromoCodeInput promoCode={promoCode} isDisabled={isDisabled} giveDiscount={giveDiscount} handleChange={handleChange}/>
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
         </div>
     );
 }

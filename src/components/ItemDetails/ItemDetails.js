@@ -24,7 +24,7 @@ function ItemDetails(props) {
                     <Typography color="inherit" variant="body1" gutterBottom>Item Details</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails className="item-details-expansion-panel-details">
-                    <Item price={price} originalPrice={price + 10}/>
+                    <Item price={price} originalPrice={price + (price * 0.10)}/>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
         </div>
