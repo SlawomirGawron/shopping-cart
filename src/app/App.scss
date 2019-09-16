@@ -1,9 +1,15 @@
+@import "../common/utilities/_variables.scss";
+
 .main-app {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 2vh;
+
+  background: $main-page-fallback-background;
+  background: $main-page-background1;
+  background: $main-page-background2;
 }
 
 @media screen and (max-height: 500px) {

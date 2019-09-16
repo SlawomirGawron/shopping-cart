@@ -12,29 +12,29 @@
 
   padding: 2vh;
   border: 2px solid black;
-  -webkit-box-shadow: 0px 0px 10px green;
-  -khtml-box-shadow: 0px 0px 10px green;
-  -moz-box-shadow: 0px 0px 10px green;
-  box-shadow: 0px 0px 10px green;
+  -webkit-box-shadow: 0px 0px 10px black;
+  -khtml-box-shadow: 0px 0px 10px black;
+  -moz-box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 10px black;
 
-  //background: $game-board-fallback-background;
-  //background: $game-board-background1;
-  //background: $game-board-background2;
-}
-
-@media screen and (max-height: 500px) {
-  .base-data-inputs {
-    height: 250px;
-    -webkit-box-shadow: 0px -5px 10px green;
-    -khtml-box-shadow: 0px -5px 10px green;
-    -moz-box-shadow: 0px -5px 10px green;
-    box-shadow: 0px -5px 10px green;
-  }
+  background: $base-data-input-fallback-background;
+  background: $base-data-input-background1;
+  background: $base-data-input-background2;
 }
 
 @media screen and (max-width: 370px) {
   .base-data-inputs {
     width: 370px;
     box-shadow: none;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .base-data-inputs {
+    height: 250px;
+    -webkit-box-shadow: 0px -5px 10px black;
+    -khtml-box-shadow: 0px -5px 10px black;
+    -moz-box-shadow: 0px -5px 10px black;
+    box-shadow: 0px -5px 10px black;
   }
 }

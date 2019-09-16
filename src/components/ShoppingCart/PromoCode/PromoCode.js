@@ -34,7 +34,7 @@ function PromoCode(props) {
 
     return (
         <div className="promo-code">
-            <ExpansionPanel className="promo-code-expansion-panel">
+            <ExpansionPanel className="promo-code-expansion-panel" style={{background: "red"}}>
                 <ExpansionPanelSummary
                     className="promo-code-expansion-panel-summary"
                     expandIcon={<ExpandMoreIcon />}
