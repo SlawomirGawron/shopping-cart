@@ -8,20 +8,14 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import InfoIcon from '@material-ui/icons/Info';
 import PromoCodeInput from "src/components/ShoppingCart/PromoCode/PromoCodeInput/PromoCodeInput";
+import InfoTooltip from "src/common/components/InfoTooltip/InfoTooltip";
 
 import 'src/components/ShoppingCart/PromoCode/PromoCode.scss';
-
-const hoverText = "discount";
 
 const styles = {
     promoTitle: {
         marginRight: '1rem',
-    },
-    info: {
-        color: 'blue',
     },
 };
 
@@ -45,9 +39,7 @@ function PromoCode(props) {
                     <Typography color="inherit" variant="body1" gutterBottom style={styles.promoTitle}>
                         Promo Code
                     </Typography>
-                    <Tooltip title={hoverText} style={styles.info}>
-                        <InfoIcon />
-                    </Tooltip>
+                    <InfoTooltip hoverText={"discount"}/>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails className="promo-code-expansion-panel-details">
                     <PromoCodeInput promoCode={promoCode} isDisabled={isDisabled} giveDiscount={giveDiscount} handleChange={handleChange}/>
