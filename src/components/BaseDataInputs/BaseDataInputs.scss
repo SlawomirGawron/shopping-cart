@@ -7,15 +7,14 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  height: 50%;
-  width: 100%;
 
   padding: 2vh;
-  border: 2px solid black;
-  -webkit-box-shadow: 0px 0px 10px black;
-  -khtml-box-shadow: 0px 0px 10px black;
-  -moz-box-shadow: 0px 0px 10px black;
-  box-shadow: 0px 0px 10px black;
+  border: $border-styling;
+  border-radius: $border-radius;
+  -webkit-box-shadow: 0px 0px 10px $box-shadow-color;
+  -khtml-box-shadow: 0px 0px 10px $box-shadow-color;
+  -moz-box-shadow: 0px 0px 10px $box-shadow-color;
+  box-shadow: 0px 0px 10px $box-shadow-color;
 
   background: $base-data-input-fallback-background;
   background: $base-data-input-background1;
@@ -24,17 +23,17 @@
 
 @media screen and (max-width: 370px) {
   .base-data-inputs {
-    width: 370px;
+    min-width: 370px;
     box-shadow: none;
+    border-radius: 5px;
   }
 }
 
 @media screen and (max-height: 500px) {
   .base-data-inputs {
-    height: 250px;
-    -webkit-box-shadow: 0px -5px 10px black;
-    -khtml-box-shadow: 0px -5px 10px black;
-    -moz-box-shadow: 0px -5px 10px black;
-    box-shadow: 0px -5px 10px black;
+    -webkit-box-shadow: 0px -5px 10px $box-shadow-color;
+    -khtml-box-shadow: 0px -5px 10px $box-shadow-color;
+    -moz-box-shadow: 0px -5px 10px $box-shadow-color;
+    box-shadow: 0px -5px 10px $box-shadow-color;
   }
 }

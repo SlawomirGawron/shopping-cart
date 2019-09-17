@@ -14,7 +14,6 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         color: 'black',
-
     },
 
     itemColumnRight: {

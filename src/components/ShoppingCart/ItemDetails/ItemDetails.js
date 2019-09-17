@@ -14,7 +14,7 @@ function ItemDetails(props) {
 
     return (
         <div className="item-details">
-            <ExpansionPanel className="item-details-expansion-panel" style={{background: "blue"}}>
+            <ExpansionPanel className="item-details-expansion-panel" >
                 <ExpansionPanelSummary
                     className="item-details-expansion-panel-summary"
                     expandIcon={<ExpandMoreIcon />}

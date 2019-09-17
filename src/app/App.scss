@@ -1,11 +1,15 @@
 @import "../common/utilities/_variables.scss";
 
 .main-app {
+  display: flex;
+  flex-direction: column;
+  // ^above added
+
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 2vh;
+  padding: 1vh;
 
   background: $main-page-fallback-background;
   background: $main-page-background1;
@@ -14,7 +18,7 @@
 
 @media screen and (max-height: 500px) {
   .main-app {
-    padding: 1vh;
+    padding: 0.5vh;
   }
 }
 
@@ -22,5 +26,6 @@
   .main-app {
     overflow-x: auto;
     padding: 0;
+    background: $white-background;
   }
 }

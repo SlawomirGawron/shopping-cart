@@ -1,14 +1,21 @@
 // App.js background color.
 $main-page-fallback-background: #000000;  /* fallback for old browsers */
-$main-page-background1: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-$main-page-background2: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$main-page-background1: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+$main-page-background2: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 // BaseDataInput background color.
-$base-data-input-fallback-background: #ED213A;  /* fallback for old browsers */
-$base-data-input-background1: -webkit-linear-gradient(to bottom, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
-$base-data-input-background2: linear-gradient(to bottom, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$base-data-input-fallback-background: #FFFFFF;  /* fallback for old browsers */
+$base-data-input-background1: -webkit-linear-gradient(to bottom, #FFFFFF, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+$base-data-input-background2: linear-gradient(to bottom, #FFFFFF, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 // ShoppingCart background color.
-$shopping-cart-fallback-background: #FDC830;  /* fallback for old browsers */
-$shopping-cart-background1: -webkit-linear-gradient(to bottom, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
-$shopping-cart-background2: linear-gradient(to bottom, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$shopping-cart-fallback-background: #FFFFFF;  /* fallback for old browsers */
+$shopping-cart-background1: -webkit-linear-gradient(to top, #FFFFFF, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+$shopping-cart-background2: linear-gradient(to top, #FFFFFF, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// Other
+$white-background: #FFFFFF;
+$box-shadow-color: #FFFFFF;
+$border-styling: 2px solid black;
+$border-radius: 20px;
+
