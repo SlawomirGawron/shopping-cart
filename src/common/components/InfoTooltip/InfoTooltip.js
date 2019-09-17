@@ -7,7 +7,7 @@ import 'src/common/components/InfoTooltip/InfoToolTip.scss';
 
 const styles = {
     info: {
-        color: 'blue',
+        color: 'black',
     }
 };
 

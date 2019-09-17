@@ -39,8 +39,6 @@ function BaseDataInputs(props) {
     );
 }
 
-
-// Maps states to properties for connect.
 const mapStateToProps = (state) => {
     return {
         total: getTotal(state),
@@ -49,16 +47,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-// Maps action creators to dispatches. Look at ..actions.js. This is the shorthand version, meaning that it does a a call in the background.
 const mapDispatchToProps = {
     totalActionCreator: totalActionCreator,
     storeDiscountActionCreator: storeDiscountActionCreator,
     provinceActionCreator: provinceActionCreator
 };
 
-// Connects the store to the component.
-// Store => createStore, actions, reducers
-// connect => MapStateToProps(what you want to get from the store), mapDispatchToProps(This is not reducers. This dispatches an action to the store,
-//                            meaning if you click this button then Redux will send that action to the store, the store will check it's reducers for that action [action.type], which updates the store)
-// Store and connect are sort of separate things.
 export default connect(mapStateToProps, mapDispatchToProps)(BaseDataInputs);

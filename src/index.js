@@ -7,8 +7,6 @@ import store from 'src/store/store';
 
 import 'src/index.css';
 
-// Need to wrap application in a Provider for the store for React Redux to work.
-// You create a store in a seperate file, hence the import.
 ReactDOM.render(
     <Provider store={store}>
         <App/>

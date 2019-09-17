@@ -1,16 +1,5 @@
 import { API_RESULT } from "src/store/actions/types";
 
-// Action is just a plain object with type and payload.
-// Dispatch happens outside of action creator. i.e in main component, do mapDispatchToProps = {... => dispatch(myActionCreator(changes))}.
-// export const promoCodeActionCreator = e => dispatch => {
-//     dispatch({
-//         type: PROMO_CODE,
-//         payload: event
-//     });
-// };
-// dispatch() can be called at the end as well. look at notes.
-
-// Action creator for taxInformationActionCreator. event is the value of payload when it gets dispatched to store.
 export function taxInformationActionCreator(value) {
     return {
         type: API_RESULT,
@@ -18,9 +7,6 @@ export function taxInformationActionCreator(value) {
     }
 }
 
-// action creator in thescope of thunk, all it is a function that dipatches aeither another action creator or an action.
-// last action creator has to dispatch an action.
-// get state has both promoCode and taxInformation in it
 export function taxInformationActionCreatorAsync () {
     return async (dispatch, getState) => {
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/',

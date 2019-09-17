@@ -1,9 +1,12 @@
 @import "../common/utilities/_variables.scss";
 
+/* Notes:
+ *      - min-height must be removed when using components that expand vertically.
+ *      - overflow-x should be hidden for larger screen sizes, and set to auto for smaller screen sizes.
+*/
 .main-app {
   display: flex;
   flex-direction: column;
-  // ^above added
 
   height: 100%;
   width: 100%;

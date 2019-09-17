@@ -58,10 +58,8 @@ const mapStateToProps = state => ({
     promoCode: getPromoCode(state)
 });
 
-// Maps action creators to dispatches. Look at ..actions.js. This is the shorthand version, meaning that it does a a call in the background.
 const mapDispatchToProps = {
     promoCodeActionCreator: promoCodeActionCreator,
 };
 
-// Instead of doing mapDispatchToProps, you can just do connect(mapstatetoprops, {actioncreator})(component).
 export default connect(mapStateToProps, mapDispatchToProps)(PromoCode);
