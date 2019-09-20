@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
@@ -13,10 +13,20 @@ const styles = {
 
 
 function TextFieldInput(props) {
-    const { total, updateTotalInStore } = props;
+    const { total, updateTotalInStore, storeDiscount } = props;
+
+    const [previousTotal, setPreviousTotal] = useState(total);
 
     const handleChange = (event) => {
-        updateTotalInStore(parseInt(event.target.value));
+        let input = parseInt(event.target.value);
+        let balance = input + storeDiscount;
+
+        if (balance > 0) {
+            updateTotalInStore(input);
+            setPreviousTotal(input);
+        } else {
+            updateTotalInStore(previousTotal);
+        }
     };
 
     return (
@@ -41,6 +51,7 @@ function TextFieldInput(props) {
 
 TextFieldInput.propTypes = {
     total: PropTypes.number.isRequired,
+    storeDiscount: PropTypes.number.isRequired,
     updateTotalInStore: PropTypes.func.isRequired
 };
 

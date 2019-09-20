@@ -32,8 +32,8 @@ function BaseDataInputs(props) {
 
     return (
         <div className="base-data-inputs">
-            <TextFieldInput total={total} updateTotalInStore={updateTotalInStore} />
-            <CheckboxInput storeDiscount={storeDiscount} updateStoreDiscountInStore={updateStoreDiscountInStore}/>
+            <TextFieldInput total={total} storeDiscount={storeDiscount} updateTotalInStore={updateTotalInStore} />
+            <CheckboxInput total={total} storeDiscount={storeDiscount} updateStoreDiscountInStore={updateStoreDiscountInStore}/>
             <SelectInput province={province} updateProvinceInStore={updateProvinceInStore} />
         </div>
     );

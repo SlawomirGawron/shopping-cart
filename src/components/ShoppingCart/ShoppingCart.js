@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 
@@ -43,8 +43,16 @@ function ShoppingCart(props) {
         return taxInformation.result[province]["applicable"];
     };
 
-    const totalSalesTax = ((total + storeDiscount) * getSalesTaxRate());
-    const totalDue = (total + storeDiscount + totalSalesTax) * promoMultiplier;
+    const calculateSalesTax = () => {
+        return ((total + storeDiscount) * getSalesTaxRate());
+    };
+
+    const calculateTotalDue = () => {
+        return (total + storeDiscount + totalSalesTax) * promoMultiplier;
+    };
+
+    const totalSalesTax = calculateSalesTax();
+    const totalDue = calculateTotalDue();
 
     useEffect(() => {
         taxInformationActionCreatorAsync();

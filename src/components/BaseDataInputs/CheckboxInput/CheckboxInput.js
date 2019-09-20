@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 function CheckboxInput(props) {
     const classes = useStyles();
-    const { updateStoreDiscountInStore } = props;
+    const { total, updateStoreDiscountInStore } = props;
 
     const [state, setState] = useState({
         holidaySpecial: {
@@ -51,11 +51,31 @@ function CheckboxInput(props) {
     };
 
     const handleChange = special => event => {
+        let balance = total;
+        let isChecked = event.target.checked;
+        const entries = Object.entries(state);
+
+        if (isChecked) {
+            for (const [key, value] of entries) {
+                if (key !== special) {
+                    if (value["checked"]) {
+                        balance += value["discount"];
+                    }
+                }
+            }
+
+            balance += state[special]["discount"];
+
+            if (balance <= 0) {
+                isChecked = !isChecked;
+            }
+        }
+
         setState({
             ...state,
             [special]: {
                 ...state[special],
-                checked: event.target.checked
+                checked: isChecked
             }
         });
     };
@@ -98,6 +118,7 @@ function CheckboxInput(props) {
 }
 
 CheckboxInput.propTypes = {
+    total: PropTypes.number.isRequired,
     storeDiscount: PropTypes.number.isRequired,
     updateStoreDiscountInStore: PropTypes.func.isRequired
 };
